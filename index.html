@@ -2,559 +2,576 @@
 
 <html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>Medical Information</title>
+    <title>Medical Information</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
-        <script src="./web3/dist/web3.min.js"></script>
+    <script src="./web3/dist/web3.min.js"></script>
 
-    </head>
+</head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h2>Select who you are : </h2>
+        <h2>Select who you are : </h2>
 
-    <button class="category" id="doctor">Doctor</button>
+        <button class="category" id="doctor">Doctor</button>
 
-    <button class="category" id="patient">Patient</button>
+        <button class="category" id="patient">Patient</button>
 
-    <br>
-	<div id = "elements">
-		<div id="docData">   
+        <br>
+        <div id="elements">
+            <div id="docData">
 
-			<label for="docId">Doctor ID :</label>
-			<input id="docId" type="text">
+                <label for="docId">Doctor ID :</label>
+                <input id="docId" type="text">
 
-			<label for="docName">Doctor Name :</label>
-			<input id="docName" type="text">
+                <label for="docName">Doctor Name :</label>
+                <input id="docName" type="text">
 
-			<label for="docEmail">Email :</label>
-			<input id="docEmail" type="text">
+                <label for="docEmail">Email :</label>
+                <input id="docEmail" type="text">
 
-			<label for="docPhone">Phone Number : </label>
-			<input id="docPhone" type="text">
+                <label for="docPhone">Phone Number : </label>
+                <input id="docPhone" type="text">
 
-			<label for="docAddress">Address : </label>
-			<input id="docAddress" type="text">
+                <label for="docAddress">Address : </label>
+                <input id="docAddress" type="text">
 
-		</div>
+            </div>
 
-		<div class="patientData">
+            <div class="patientData">
 
-			<label for="patId">Patient ID :</label>
-			<input id="patId" type="text">
+                <label for="patId">Patient ID :</label>
+                <input id="patId" type="text">
 
-			<label for="patName">Patient Name :</label>
-			<input id="patName" type="text">
+                <label for="patName">Patient Name :</label>
+                <input id="patName" type="text">
 
-			<label for="patEmail">Email :</label>
-			<input id="patEmail" type="text">
+                <label for="patEmail">Email :</label>
+                <input id="patEmail" type="text">
 
-			<label for="patPhone">Phone Number : </label>
-			<input id="patPhone" type="text">
+                <label for="patPhone">Phone Number : </label>
+                <input id="patPhone" type="text">
 
-			<label for="patAddress">Address : </label>
-			<input id="patAddress" type="text">
+                <label for="patAddress">Address : </label>
+                <input id="patAddress" type="text">
 
-		</div>
+            </div>
 
-   		 <br>
+            <br>
 
-		<button id="store">StoreD</button>
-		<button id="storeP">StoreP</button>
-		<button id="share">Share</button>
-		<br>
-		
-		<label for="shareDocAddress" id = "labelShare" >Enter Address of doctor you want to share your profile with</label>
-		<input type="text" name="shareDocAddress" id="shareDocAddress">	
-		
-		<br>
+            <button id="store">StoreD</button>
+            <button id="storeP">StoreP</button>
+            <button id="share">Share</button>
+            <br>
 
-		<label for="searchData" id = "labelSearch"><b>Enter Address of Patient and Press Retrieve:</b></label> 
-		 <input type="text" id="searchData">
+            <label for="shareDocAddress" id="labelShare">Enter Address of doctor you want to share your profile with</label>
+            <input type="text" name="shareDocAddress" id="shareDocAddress">
 
-		<button id="retrieve">RetrieveDoc</button>
-		<button id="retrieveP">RetrieveP</button>
-		<br>
-		<button id="retPatByDoc">RetrievePat</button>
-		<br>
+            <br>
 
-		<p id="information"></p>
-	</div>	
-</div>
+            <label for="searchData" id="labelSearch"><b>Enter Address of Patient and Press Retrieve:</b></label>
+            <input type="text" id="searchData">
+
+            <button id="retrieve">RetrieveDoc</button>
+            <button id="retrieveP">RetrieveP</button>
+            <br>
+            <button id="retPatByDoc">RetrievePat</button>
+            <br>
+
+            <p id="information"></p>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
-<script>
+    <script>
 
-	$("#docData , .patientData , #store , #storeP , #share , #labelSearch , #searchData , #retrieve , #retrieveP , #retPatByDoc , #information  , #labelShare , #shareDocAddress"  ).hide();
+        $("#docData , .patientData , #store , #storeP , #share , #labelSearch , #searchData , #retrieve , #retrieveP , #retPatByDoc , #information  , #labelShare , #shareDocAddress").hide();
 
-	$("#doctor").click(function(){
-		$("#docData ,#store , #labelSearch , #searchData , #retrieve , #retPatByDoc  , #information").show();
-		$( "#patient" ).prop( "disabled", true );
+        $("#doctor").click(function () {
+            $("#docData ,#store , #labelSearch , #searchData , #retrieve , #retPatByDoc  , #information").show();
+            $("#patient").prop("disabled", true);
 
-	})
+        })
 
-	$("#patient").click(function(){
-		$(".patientData , #storeP , #retrieveP , #information , #labelShare , #shareDocAddress , #share").show();
-		$( "#doctor" ).prop( "disabled", true );
+        $("#patient").click(function () {
+            $(".patientData , #storeP , #retrieveP , #information , #labelShare , #shareDocAddress , #share").show();
+            $("#doctor").prop("disabled", true);
 
-	})
-
-
-
-    if(typeof web3 !== 'undefined') {
-
-        web3 = new Web3(web3.currentProvider);
-
-    } else {
-
-// set the provider you want from Web3.providers
-
-        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));  
-
-    }
-
-    web3.eth.defaultAccount = web3.eth.accounts[0];
-
-    var AssignmentContract = web3.eth.contract([
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "patId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "patName",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "patEmail",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "patPhone",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "patAddress",
-				"type": "string"
-			}
-		],
-		"name": "patientInfo",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "doctorId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "doctorName",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "doctorEmail",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "doctorPhone",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "doctorAddress",
-				"type": "string"
-			}
-		],
-		"name": "doctorInfo",
-		"type": "event"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_patient",
-				"type": "address"
-			},
-			{
-				"name": "_doctor",
-				"type": "address"
-			}
-		],
-		"name": "giveAccessToDocter",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_address",
-				"type": "address"
-			},
-			{
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"name": "_doctorName",
-				"type": "string"
-			},
-			{
-				"name": "_doctorEmail",
-				"type": "string"
-			},
-			{
-				"name": "_doctorPhone",
-				"type": "string"
-			},
-			{
-				"name": "_doctorAddress",
-				"type": "string"
-			}
-		],
-		"name": "setDoctor",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_address",
-				"type": "address"
-			},
-			{
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"name": "_patName",
-				"type": "string"
-			},
-			{
-				"name": "_patEmail",
-				"type": "string"
-			},
-			{
-				"name": "_patPhone",
-				"type": "string"
-			},
-			{
-				"name": "_patAddress",
-				"type": "string"
-			}
-		],
-		"name": "setPatient",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_patient",
-				"type": "address"
-			}
-		],
-		"name": "docAccessAddress",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "doctorAccts",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_address",
-				"type": "address"
-			}
-		],
-		"name": "getDoctor",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getDoctors",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_address",
-				"type": "address"
-			}
-		],
-		"name": "getPatient",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_patientToSearch",
-				"type": "address"
-			}
-		],
-		"name": "getPatientData",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getPatients",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "patientAccts",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	}
-]);
-
-var Assignment = AssignmentContract.at('0x00b2acf5c2f45fd8c4f416d5d426f5bf9179691f');
-
-console.log(Assignment);
-
-$("#retrieve").click(function (){
-
-	
-		Assignment.getDoctor(web3.eth.defaultAccount, function (error, result) {
-
-			if (!error) {
-				
-				$("#information").html(result[0] + ' <br> ' + result[1] + '<br>'+ result[2] + '<br>' + result[3] + '<br>' + result[4]);
-
-			} else {
-
-				console.log(error);
-
-			}
-		});
-	
-
-});
-
-	$("#retrieveP").click(function(){
-		Assignment.getPatient(web3.eth.defaultAccount, function (error, result) {
-			console.log("hi");
-			if (!error) {
-				
-				$("#information").html(result[0] + ' <br> ' + result[1] + '<br>'+ result[2] + '<br>' + result[3] + '<br>' + result[4]);
-
-			} else {
-
-				console.log(error);
-
-			}
-		});
-
-	})
-
-
-	$("#store").click(function () {
-
-    	Assignment.setDoctor(web3.eth.defaultAccount, $("#docId").val(), $("#docName").val(), $("#docEmail").val(), $("#docPhone").val(), $("#docAddress").val(), {from:web3.eth.defaultAccount, gas:300000});
-
-	});
-
-	$("#storeP").click(function () {
-		console.log("hi");
-		Assignment.setPatient(web3.eth.defaultAccount, $("#patId").val(), $("#patName").val(), $("#patEmail").val(), $("#patPhone").val(), $("#patAddress").val(), {from:web3.eth.defaultAccount, gas:300000});
-
-	});
+        })
 
 
 
-	$("#share").click(function(){
-		var docAd = $("#shareDocAddress").val();
-		console.log(docAd);
-		Assignment.giveAccessToDocter(web3.eth.defaultAccount, docAd);
-		if($("#shareDocAddress").val()==""){
-			alert("Please enter address")
-		}
-		else{
-		alert("Shared Profile Successfully");
-		}	
-	});
+        if (typeof web3 !== 'undefined') {
+
+            web3 = new Web3(web3.currentProvider);
+
+        } else {
+
+            // set the provider you want from Web3.providers
+            const provider = new Web3.providers.HttpProvider('rinkeby.infura.io/v3/fba4bd7be59e4baaa9fc8992850c4ec9');
+            web3 = new Web3(provider);
 
 
-	$("#retPatByDoc").click(function(){
 
-			Assignment.getPatientData($("#searchData").val() , function(error, result){
-				if (!error) {
-				
-				$("#information").html(result[0] + ' <br> ' + result[1] + '<br>'+ result[2]+ '<br>'+ result[3]+ '<br>'+ result[4]);
+            //      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
-				} else {
+        }
 
-				console.log(error);
+        web3.eth.defaultAccount = web3.eth.accounts[0];
 
-				}
-			});
+        var AssignmentContract = web3.eth.contract([
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "name": "patId",
+                        "type": "uint256"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "patName",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "patEmail",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "patPhone",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "patAddress",
+                        "type": "string"
+                    }
+                ],
+                "name": "patientInfo",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "name": "doctorId",
+                        "type": "uint256"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "doctorName",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "doctorEmail",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "doctorPhone",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "name": "doctorAddress",
+                        "type": "string"
+                    }
+                ],
+                "name": "doctorInfo",
+                "type": "event"
+            },
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "_patient",
+                        "type": "address"
+                    },
+                    {
+                        "name": "_doctor",
+                        "type": "address"
+                    }
+                ],
+                "name": "giveAccessToDocter",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "_address",
+                        "type": "address"
+                    },
+                    {
+                        "name": "_id",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "_doctorName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "_doctorEmail",
+                        "type": "string"
+                    },
+                    {
+                        "name": "_doctorPhone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "_doctorAddress",
+                        "type": "string"
+                    }
+                ],
+                "name": "setDoctor",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "_address",
+                        "type": "address"
+                    },
+                    {
+                        "name": "_id",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "_patName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "_patEmail",
+                        "type": "string"
+                    },
+                    {
+                        "name": "_patPhone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "_patAddress",
+                        "type": "string"
+                    }
+                ],
+                "name": "setPatient",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "_patient",
+                        "type": "address"
+                    }
+                ],
+                "name": "docAccessAddress",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "address[]"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "doctorAccts",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "_address",
+                        "type": "address"
+                    }
+                ],
+                "name": "getDoctor",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "getDoctors",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "address[]"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "_address",
+                        "type": "address"
+                    }
+                ],
+                "name": "getPatient",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "_patientToSearch",
+                        "type": "address"
+                    }
+                ],
+                "name": "getPatientData",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    },
+                    {
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "getPatients",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "address[]"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "patientAccts",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ]);
 
-	})
+        var Assignment = AssignmentContract.at('0x428e0dd683c6b74903ee3ff06ebd44a2a47078cf');
+
+        console.log(Assignment);
+
+        $("#retrieve").click(function () {
 
 
- </script>
+            Assignment.getDoctor(web3.eth.defaultAccount, function (error, result) {
+
+                if (!error) {
+
+                    $("#information").html(result[0] + ' <br> ' + result[1] + '<br>' + result[2] + '<br>' + result[3] + '<br>' + result[4]);
+
+                } else {
+
+                    console.log(error);
+
+                }
+            });
+
+
+        });
+
+        $("#retrieveP").click(function () {
+            Assignment.getPatient(web3.eth.defaultAccount, function (error, result) {
+                console.log("hi");
+                if (!error) {
+
+                    $("#information").html(result[0] + ' <br> ' + result[1] + '<br>' + result[2] + '<br>' + result[3] + '<br>' + result[4]);
+
+                } else {
+
+                    console.log(error);
+
+                }
+            });
+
+        })
+
+
+        $("#store").click(function () {
+
+            Assignment.setDoctor(web3.eth.defaultAccount, $("#docId").val(), $("#docName").val(), $("#docEmail").val(), $("#docPhone").val(), $("#docAddress").val(),
+                { from: web3.eth.defaultAccount, gas: 300000 }, (err, res) => {
+                    if (err) throw err;
+                    console.log("successfull");
+                    console.log(res);
+                    alert("Transaction Confirmed" + "\n https://rinkeby.etherscan.io/tx/" + res);
+                })
+
+        });
+
+        $("#storeP").click(function () {
+            console.log("hi");
+            Assignment.setPatient(web3.eth.defaultAccount, $("#patId").val(), $("#patName").val(), $("#patEmail").val(), $("#patPhone").val(), $("#patAddress").val(),
+                { from: web3.eth.defaultAccount, gas: 300000 }, (err) => {
+                    if (err) throw err;
+                    console.log("successfull");
+                });
+
+        });
+
+
+
+        $("#share").click(function () {
+            var docAd = $("#shareDocAddress").val();
+            console.log(docAd);
+            Assignment.giveAccessToDocter((web3.eth.defaultAccount, docAd), (err) => {
+                if (err) throw err;
+                console.log("successfull");
+            });
+            if ($("#shareDocAddress").val() == "") {
+                alert("Please enter address")
+            }
+            else {
+                alert("Shared Profile Successfully");
+            }
+        });
+
+
+        $("#retPatByDoc").click(function () {
+
+            Assignment.getPatientData($("#searchData").val(), function (error, result) {
+                if (!error) {
+
+                    $("#information").html(result[0] + ' <br> ' + result[1] + '<br>' + result[2] + '<br>' + result[3] + '<br>' + result[4]);
+
+                } else {
+
+                    console.log(error);
+
+                }
+            });
+
+        })
+
+
+    </script>
 
 </body>
 
